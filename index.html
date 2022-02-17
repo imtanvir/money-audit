@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="./output/tailwind.css">
 </head>
 <body class="text-center">
-    <header><h1 class="font-bold text-black text-3xl">Money Audit</h1></header>
-    <main class="flex md:flex-col">
-        <div class="money_image_field sm:w-full">
-            <div class="money_image">
-                <img class="" src="img/money.jpg" alt="money image">
+    <header><h1 class="font-bold text-black text-3xl">Money Audit $</h1></header>
+    <main class="flex lg:flex-row sm:flex-col py-4 px-10 sm:justify-center">
+        <div class="money_image_field w-2/4 sm:w-full flex justify-center">
+            <div class="money_image w-full">
+                <img class="w-full" src="img/money.jpg" alt="money image">
             </div>
         </div>
-        <div class="money_calculate_field sm:w-full">
+        <div class="money_calculate_field w-2/4 sm:w-full pt-14 sm:mt-20">
             <div class="money_audit_field">
                 <h3 class="text-black font-bold text-base">Income</h3>
-                <div class="income_input_field">
+                <div class="income_input_field flex justify-center">
                     <label for="incomeAmount">Income:</label>
                     <input type="text" id="incomeAmount">
                 </div>
@@ -41,9 +41,12 @@
                     <h2 class="text-black font-bold text-base">Balence: <span id="afterExpencesBalence">000</span></h2>
                 </div>
                 <div class="saving_money_input_field">
-                    <label for="saveAmount">Save</label>
-                    <span><input type="text" id="saveParcenteg" placeholder="Enter percentage"> % </span>
-                    <button type="submit" id="savingAmontEntryBtn">Save</button>
+                    <div class="saving_parcenteg_input flex justify-center">
+                        <label for="saveAmount">Save:</label>
+                        <input class="w-16 px-3" type="text" id="saveParcenteg" placeholder="Enter">
+                        <span class="px-3">%</span>
+                        <button type="submit" id="savingAmontEntryBtn">Save</button>
+                    </div>
                     <h2 class="text-black font-bold text-base">Saving Amount: <span id="savingAmount"></span></h2>
                     <h2 class="text-black font-bold text-base">Remaining Balence: <span id="remainingBlnc"></span></h2>
                 </div>
