@@ -1,3 +1,10 @@
+<!--  
+In this project, there is no any custom css file but tailwind.css. Because I use tailwindcss through tailwind cli.
+so I hope that you will observe that please.
+
+My next issue is private repository issue: I did not access the private repo what was provide in assignment 5.
+Thats why I submit my code in a public repository. Please consider that.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +15,28 @@
     <link rel="stylesheet" href="./output/tailwind.css">
 </head>
 <body class="text-center">
+    <!-- Heade section for title start -->
     <header><h1 class="font-bold text-black text-3xl">Money Audit $</h1></header>
+    <!-- Heade section for title start -->
+    <!-- Main content area start -->
     <main class="h-full space-x-10 sm:space-x-0 sm:space-y-5 flex lg:flex-row sm:flex-col py-4 px-10 sm:justify-center">
+        <!-- left side image background area start -->
         <div class="money_image_field w-2/4 sm:w-full flex justify-center">
             <div class="money_image w-full h-full">
                 <img class="w-full h-full" src="img/money.jpg" alt="money image">
             </div>
         </div>
+        <!-- left side image background area end -->
+        <!-- Right side input and calculation area start -->
         <div class="money_calculate_field bg-gray-100 h-4/5 w-2/4 sm:w-full py-10">
             <div class="money_audit_field">
+                <!-- Income input field -->
                 <h3 class="text-black font-bold text-2xl py-3">Income</h3>
                 <div class="space-x-3 income_input_field flex justify-center text-black text-lg font-semibold">
                     <label for="incomeAmount">Income:</label>
                     <input type="text" id="incomeAmount" class="bg-gray-300 w-40">
                 </div>
+                <!-- Expences amount input field start -->
                 <div class="money_audit_input_section">
                     <h2 class="text-black font-bold text-2xl py-3">Expences</h2>
                     <div class="section-container flex justify-center space-x-3">
@@ -36,22 +51,29 @@
                             <input type="text" id="clothesMoney" class="bg-gray-300 w-40 py-0.5">
                         </div>
                     </div>
-                    <button class="calculate_button rounded bg-sky-400 px-8 py-1 my-5 text-white text-lg font-semibold" id="calc-btn" type="submit">Calculate</button>
-                    <h2 class="text-black font-semibold text-lg pb-2">Total Expences: <span id="totalExpences">000</span></h2>
-                    <h2 class="text-black font-semibold text-lg pb-2">Balence: <span id="afterExpencesBalence">000</span></h2>
+                    <button class="calculate_button rounded bg-sky-400 px-8 py-1 my-5 text-white text-lg font-semibold hover:bg-sky-300" id="calc-btn" type="submit">Calculate</button>
+                    <h2 class="text-black font-semibold text-lg pb-1">Total Expences: <span id="totalExpences">000</span></h2>
+                    <h2 class="text-black font-semibold text-lg pb-3">Balence: <span id="afterExpencesBalence">000</span></h2>
                 </div>
+                <!-- Expences amount input field end -->
+                <!-- saving amount input field start -->
                 <div class="saving_money_input_field">
                     <div class="saving_parcenteg_input flex justify-center">
                         <label for="saveAmount">Save:</label>
                         <input class="w-20 px-6 ml-4 bg-gray-300" type="text" id="saveParcenteg" placeholder="Enter">
                         <span class="px-3">%</span>
-                        <button type="submit" id="savingAmontEntryBtn" class="calculate_button rounded bg-sky-400 px-8 py-0.5 text-white text-lg font-semibold">Save</button>
+                        <button type="submit" id="savingAmontEntryBtn" class="calculate_button rounded bg-sky-400 px-8 py-0.5 text-white text-lg font-semibold hover:bg-sky-300">Save</button>
                     </div>
-                    <h2 class="text-black font-bold text-base pb-2">Saving Amount: <span id="savingAmount"></span></h2>
+                    <h2 class="text-black font-bold text-base py-1">Saving Amount: <span id="savingAmount"></span></h2>
                     <h2 class="text-black font-bold text-base">Remaining Balence: <span id="remainingBlnc"></span></h2>
                 </div>
+                <!-- saving amount input field end -->
             </div>
         </div>
+        <!-- Right side input and calculation area end -->
     </main>
+    <!-- Main content area end -->
+    <!-- javascript file include here  -->
+    <script src="js/calculate.js"></script>
 </body>
 </html>
