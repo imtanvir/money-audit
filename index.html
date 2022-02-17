@@ -9,45 +9,45 @@
 </head>
 <body class="text-center">
     <header><h1 class="font-bold text-black text-3xl">Money Audit $</h1></header>
-    <main class="flex lg:flex-row sm:flex-col py-4 px-10 sm:justify-center">
+    <main class="h-full space-x-10 sm:space-x-0 sm:space-y-5 flex lg:flex-row sm:flex-col py-4 px-10 sm:justify-center">
         <div class="money_image_field w-2/4 sm:w-full flex justify-center">
-            <div class="money_image w-full">
-                <img class="w-full" src="img/money.jpg" alt="money image">
+            <div class="money_image w-full h-full">
+                <img class="w-full h-full" src="img/money.jpg" alt="money image">
             </div>
         </div>
-        <div class="money_calculate_field w-2/4 sm:w-full pt-14 sm:mt-20">
+        <div class="money_calculate_field bg-gray-100 h-4/5 w-2/4 sm:w-full py-10">
             <div class="money_audit_field">
-                <h3 class="text-black font-bold text-base">Income</h3>
-                <div class="income_input_field flex justify-center">
+                <h3 class="text-black font-bold text-2xl py-3">Income</h3>
+                <div class="space-x-3 income_input_field flex justify-center text-black text-lg font-semibold">
                     <label for="incomeAmount">Income:</label>
-                    <input type="text" id="incomeAmount">
+                    <input type="text" id="incomeAmount" class="bg-gray-300 w-40">
                 </div>
                 <div class="money_audit_input_section">
-                    <h2 class="text-black font-bold text-base">Expences</h2>
-                    <div class="section-container flex justify-center">
-                        <div class="input_field_name flex flex-col">
+                    <h2 class="text-black font-bold text-2xl py-3">Expences</h2>
+                    <div class="section-container flex justify-center space-x-3">
+                        <div class="space-y-3 input_field_name flex flex-col text-lg text-black font-semibold text-right">
                             <label for="foodMoney">Food:</label>
                             <label for="rentMoney">Rent:</label>
                             <label for="clothesMoney">Clothes:</label>
                         </div>
-                        <div class="input_enter_field flex flex-col">
-                            <input type="text" id="foodMoney">
-                            <input type="text" id="rentMoney">
-                            <input type="text" id="clothesMoney">
+                        <div class="space-y-3 input_enter_field flex flex-col">
+                            <input type="text" id="foodMoney" class="bg-gray-300 w-40 py-0.5">
+                            <input type="text" id="rentMoney" class="bg-gray-300 w-40 py-0.5">
+                            <input type="text" id="clothesMoney" class="bg-gray-300 w-40 py-0.5">
                         </div>
                     </div>
-                    <button class="calculate_button" id="calc-btn" type="submit">Calculate</button>
-                    <h2 class="text-black font-bold text-base">Total Expences: <span id="totalExpences">000</span></h2>
-                    <h2 class="text-black font-bold text-base">Balence: <span id="afterExpencesBalence">000</span></h2>
+                    <button class="calculate_button rounded bg-sky-400 px-8 py-1 my-5 text-white text-lg font-semibold" id="calc-btn" type="submit">Calculate</button>
+                    <h2 class="text-black font-semibold text-lg pb-2">Total Expences: <span id="totalExpences">000</span></h2>
+                    <h2 class="text-black font-semibold text-lg pb-2">Balence: <span id="afterExpencesBalence">000</span></h2>
                 </div>
                 <div class="saving_money_input_field">
                     <div class="saving_parcenteg_input flex justify-center">
                         <label for="saveAmount">Save:</label>
-                        <input class="w-16 px-3" type="text" id="saveParcenteg" placeholder="Enter">
+                        <input class="w-20 px-6 ml-4 bg-gray-300" type="text" id="saveParcenteg" placeholder="Enter">
                         <span class="px-3">%</span>
-                        <button type="submit" id="savingAmontEntryBtn">Save</button>
+                        <button type="submit" id="savingAmontEntryBtn" class="calculate_button rounded bg-sky-400 px-8 py-0.5 text-white text-lg font-semibold">Save</button>
                     </div>
-                    <h2 class="text-black font-bold text-base">Saving Amount: <span id="savingAmount"></span></h2>
+                    <h2 class="text-black font-bold text-base pb-2">Saving Amount: <span id="savingAmount"></span></h2>
                     <h2 class="text-black font-bold text-base">Remaining Balence: <span id="remainingBlnc"></span></h2>
                 </div>
             </div>
