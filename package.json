@@ -1,0 +1,23 @@
+{
+  "name": "assignment5-pro-hero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./src/tailwind.css -o ./output/tailwind.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Porgramming-Hero-web-course/money-master-imtanvir.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Porgramming-Hero-web-course/money-master-imtanvir/issues"
+  },
+  "homepage": "https://github.com/Porgramming-Hero-web-course/money-master-imtanvir#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.0.23"
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Audit</title>
+    <link rel="stylesheet" href="./output/tailwind.css">
+</head>
+<body class="text-center">
+    <header><h1 class="font-bold text-black text-3xl">Money Audit</h1></header>
+    <main class="flex md:flex-col">
+        <div class="money_image_field sm:w-full">
+            <div class="money_image">
+                <img class="" src="img/money.jpg" alt="money image">
+            </div>
+        </div>
+        <div class="money_calculate_field sm:w-full">
+            <div class="money_audit_field">
+                <h3 class="text-black font-bold text-base">Income</h3>
+                <div class="income_input_field">
+                    <label for="incomeAmount">Income:</label>
+                    <input type="text" id="incomeAmount">
+                </div>
+                <div class="money_audit_input_section">
+                    <h2 class="text-black font-bold text-base">Expences</h2>
+                    <div class="section-container flex justify-center">
+                        <div class="input_field_name flex flex-col">
+                            <label for="foodMoney">Food:</label>
+                            <label for="rentMoney">Rent:</label>
+                            <label for="clothesMoney">Clothes:</label>
+                        </div>
+                        <div class="input_enter_field flex flex-col">
+                            <input type="text" id="foodMoney">
+                            <input type="text" id="rentMoney">
+                            <input type="text" id="clothesMoney">
+                        </div>
+                    </div>
+                    <button class="calculate_button" id="calc-btn" type="submit">Calculate</button>
+                    <h2 class="text-black font-bold text-base">Total Expences: <span id="totalExpences">000</span></h2>
+                    <h2 class="text-black font-bold text-base">Balence: <span id="afterExpencesBalence">000</span></h2>
+                </div>
+                <div class="saving_money_input_field">
+                    <label for="saveAmount">Save</label>
+                    <span><input type="text" id="saveParcenteg" placeholder="Enter percentage"> % </span>
+                    <button type="submit" id="savingAmontEntryBtn">Save</button>
+                    <h2 class="text-black font-bold text-base">Saving Amount: <span id="savingAmount"></span></h2>
+                    <h2 class="text-black font-bold text-base">Remaining Balence: <span id="remainingBlnc"></span></h2>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
