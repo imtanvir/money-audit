@@ -67,11 +67,16 @@ Thats why I submit my code in a public repository. Please consider that.
                 <!-- Expences amount input field end -->
                 <!-- saving amount input field start -->
                 <div class="saving_money_input_field">
-                    <div class="saving_parcenteg_input flex justify-center">
-                        <label for="saveAmount">Save:</label>
-                        <input class="w-20 px-6 ml-4 bg-gray-300" type="text" id="saveParcenteg" placeholder="Enter">
-                        <span class="px-3">%</span>
-                        <button type="submit" id="savingAmontEntryBtn" class="calculate_button rounded bg-sky-400 px-8 py-0.5 text-white text-lg font-semibold hover:bg-sky-300">Save</button>
+                    <div class="saving_parcenteg_input flex flex-col justify-center">
+                        <div class="saving_input">
+                            <label for="saveAmount">Save:</label>
+                            <input class="w-20 px-6 ml-4 bg-gray-300" type="text" id="saveParcenteg" onkeyup="savingCalc(this.id)" placeholder="Enter">
+                            <span class="px-3">%</span>
+                            <button type="submit" id="savingAmontEntryBtn" class="calculate_button rounded bg-sky-400 px-8 py-0.5 text-white text-lg font-semibold hover:bg-sky-300">Save</button>
+                        </div>
+                        <div class="saving_input_errHandleTxt">
+                            <h4 id="savingErr" class=" pt-3text-sm font-bold text-rose-500"></h4>
+                        </div>                         
                     </div>
                     <h2 class="text-black font-bold text-base py-1">Saving Amount: <span id="savingAmount"></span></h2>
                     <h2 class="text-black font-bold text-base">Remaining Balence: <span id="remainingBlnc"></span></h2>

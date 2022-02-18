@@ -40,7 +40,6 @@ function valueEntryErr(idName) {
     } else {
         IncomeValueErrtxt = '';
         IncomeErr.innerText = IncomeValueErrtxt;
-
     }
     if (inputValue < 0 || inputValue == '-' || inputValue == 0 || isNaN(inputValue)) {
         valueErrtxt = 'Please enter a positive amount';
@@ -87,3 +86,18 @@ idCatcher('calc-btn').addEventListener('click', function () {
         return idCatcher('error-text').innerText = errorTextMsg;
     }
 });
+function savingCaltoIncome(Percentage,myincome) {
+    return ((Percentage * 100) / myincome);
+}
+function savingCalc(idName) {
+    const savingPercentegIdValue = idCatcher(idName);
+    const savingPercenteg = parseFloat(savingPercentegIdValue.value);
+    const savingErr = idCatcher('savingErr');
+    if (savingPercenteg < 0 || savingPercenteg == '-' || savingPercenteg == 0 || isNaN(savingPercenteg)) {
+        savingValueErrtxt = 'Please enter a positive Percentage number which is bigger then 0!';
+        return savingErr.innerText = savingValueErrtxt;
+    } else {
+        savingValueErrtxt = '';
+        savingErr.innerText = savingValueErrtxt;
+    }
+}
