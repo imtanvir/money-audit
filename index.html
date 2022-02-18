@@ -32,23 +32,31 @@ Thats why I submit my code in a public repository. Please consider that.
             <div class="money_audit_field">
                 <!-- Income input field -->
                 <h3 class="text-black font-bold text-2xl py-3">Income</h3>
-                <div class="space-x-3 income_input_field flex justify-center text-black text-lg font-semibold">
-                    <label for="incomeAmount">Income:</label>
-                    <input type="text" id="incomeAmount" class="bg-gray-300 w-40">
+                <div class="space-x-3 income_input_field flex flex-col justify-center text-black text-lg font-semibold">
+                    <div class="income_submit_field">
+                        <label for="incomeAmount">Income:</label>
+                        <input type="text" id="incomeAmount" onkeyup="valueEntryErr(this.id)" class="bg-gray-300 w-40">
+                    </div>
+                    <div class="income_errtxt pt-2">
+                        <h4 id="incomeErr" class="text-sm font-bold text-rose-500"></h4>
+                    </div>
                 </div>
                 <!-- Expences amount input field start -->
                 <div class="money_audit_input_section">
                     <h2 class="text-black font-bold text-2xl py-3">Expences</h2>
                     <div class="section-container flex justify-center space-x-3">
-                        <div class="space-y-3 input_field_name flex flex-col text-lg text-black font-semibold text-right">
+                        <div class="space-y-10 input_field_name flex flex-col text-lg text-black font-semibold text-right">
                             <label for="foodMoney">Food:</label>
                             <label for="rentMoney">Rent:</label>
                             <label for="clothesMoney">Clothes:</label>
                         </div>
-                        <div class="space-y-3 input_enter_field flex flex-col">
-                            <input type="text" id="foodMoney" class="bg-gray-300 w-40 py-0.5">
-                            <input type="text" id="rentMoney" class="bg-gray-300 w-40 py-0.5">
-                            <input type="text" id="clothesMoney" class="bg-gray-300 w-40 py-0.5">
+                        <div class="space-y-5 input_enter_field flex flex-col">
+                            <input type="text" id="foodMoney" onkeyup="valueEntryErr(this.id)" value="00" class="bg-gray-300 w-40 py-0.5">
+                            <p id="foodMoneyValueErr" class="text-sm font-bold text-rose-500"></p>
+                            <input type="text" id="rentMoney" onkeyup="valueEntryErr(this.id)" value="00" class="bg-gray-300 w-40 py-0.5">
+                            <p id="rentMoneyValueErr" class="text-sm font-bold text-rose-500"></p>
+                            <input type="text" id="clothesMoney" onkeyup="valueEntryErr(this.id)" value="00" class="bg-gray-300 w-40 py-0.5">
+                            <p id="clothesMoneyValueErr" class="text-sm font-bold text-rose-500"></p>
                         </div>
                     </div>
                     <button class="calculate_button rounded bg-sky-400 px-8 py-1 my-5 text-white text-lg font-semibold hover:bg-sky-300" id="calc-btn" type="submit">Calculate</button>
