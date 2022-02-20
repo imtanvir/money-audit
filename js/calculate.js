@@ -17,7 +17,6 @@ function incomeValueErr(idName) {
     const rent = parseFloat(idCatcher('rentMoney').value);
     const clothes = parseFloat(idCatcher('clothesMoney').value);
     const inputValue = parseFloat(idCatcher(idName).value);
-    console.log(food, rent, clothes, inputValue);
     IncomeErr = idCatcher('incomeErr');
     if (inputValue <= 0 || inputValue == '-' || inputValue == 0 || isNaN(inputValue)) {
         return IncomeErr.innerText = 'Please enter a positive amount which is bigger then 0!';
@@ -58,7 +57,6 @@ function expencesEntryErr(idName) {
     } else {
         valueErrtxt = '';
         idCatcher('error-text').innerText = '';
-        console.log(foodMoney);
     }
     // If any entered value is wrong or not, the error/empty message will send from there after validation check 
     if (idName == 'foodMoney') {
@@ -98,7 +96,6 @@ idCatcher('calc-btn').addEventListener('click', function() {
     // If any error ocurs then this portion will exicute and return a error
     else {
         const errorTextMsg = 'Please enter a valid amount and positive number!';
-        console.log(incomeAmount, typeof(incomeAmount));
         return idCatcher('error-text').innerText = errorTextMsg;
     }
 });
