@@ -12,7 +12,7 @@ idCatcher('incomeAmount').addEventListener('keyup', function() {
     incomeAmount = parseFloat(document.getElementById(this.id).value);
 });
 // wrong value entry error handle
-function incomeValueErr(idName) {
+function incomeValueErr(idName) { 
     const food = parseFloat(idCatcher('foodMoney').value);
     const rent = parseFloat(idCatcher('rentMoney').value);
     const clothes = parseFloat(idCatcher('clothesMoney').value);
