@@ -14,28 +14,30 @@ Thats why I submit my code in a public repository. Please consider that.
     <title>Money Audit</title>
     <link rel="stylesheet" href="./output/tailwind.css">
 </head>
-<body class="text-center">
+<body class="text-center bg-sky-200">
     <!-- Heade section for title start -->
-    <header><h1 class="font-bold text-black text-3xl">Money Audit $</h1></header>
+    <header>
+        <h1 class="font-bold text-sky-900 font-serif text-3xl pt-3">Money Audit <span class="text-sky-500 font-extrabold">$</span></h1>
+    </header>
     <!-- Heade section for title start -->
     <!-- Main content area start -->
-    <main class="h-full space-x-10 sm:space-x-0 sm:space-y-5 flex lg:flex-row sm:flex-col py-4 px-10 sm:justify-center">
+    <main class="h-full sm:space-y-5 flex lg:flex-row sm:flex-col py-4 px-10 sm:justify-center">
         <!-- left side image background area start -->
         <div class="money_image_field w-2/4 sm:w-full flex justify-center">
-            <div class="money_image w-full h-full">
-                <img class="w-full h-full" src="img/money.jpg" alt="money image">
+            <div class="money_image w-full h-full flex justify-center">
+                <img class="w-5/6 h-full" src="img/expenses.jpg" alt="money image">
             </div>
         </div>
         <!-- left side image background area end -->
         <!-- Right side input and calculation area start -->
-        <div class="money_calculate_field bg-gray-100 h-4/5 w-2/4 sm:w-full py-10">
+        <div class="mt-10 sm:mt-0 money_calculate_field bg-gray-100 h-4/5 w-2/4 sm:w-full py-4 rounded-md">
             <div class="money_audit_field">
                 <!-- Income input field -->
-                <h3 class="text-black font-bold text-2xl py-3">Income</h3>
+                <h3 class="text-black font-bold text-2xl py-2.5">Income</h3>
                 <div class="space-x-3 income_input_field flex flex-col justify-center text-black text-lg font-semibold">
                     <div class="income_submit_field">
                         <label for="incomeAmount">Income:</label>
-                        <input type="text" id="incomeAmount" onkeyup="valueEntryErr(this.id)" class="bg-gray-300 w-40">
+                        <input type="text" id="incomeAmount" onkeyup="incomeValueErr(this.id)" class="bg-gray-200 w-40 text-center py-0">
                     </div>
                     <div class="income_errtxt pt-2">
                         <h4 id="incomeErr" class="text-sm font-bold text-rose-500"></h4>
@@ -43,23 +45,33 @@ Thats why I submit my code in a public repository. Please consider that.
                 </div>
                 <!-- Expences amount input field start -->
                 <div class="money_audit_input_section">
-                    <h2 class="text-black font-bold text-2xl py-3">Expences</h2>
-                    <div class="section-container flex justify-center space-x-3">
-                        <div class="space-y-10 input_field_name flex flex-col text-lg text-black font-semibold text-right">
-                            <label for="foodMoney">Food:</label>
-                            <label for="rentMoney">Rent:</label>
-                            <label for="clothesMoney">Clothes:</label>
-                        </div>
-                        <div class="space-y-5 input_enter_field flex flex-col">
-                            <input type="text" id="foodMoney" onkeyup="valueEntryErr(this.id)" value="00" class="bg-gray-300 w-40 py-0.5">
-                            <p id="foodMoneyValueErr" class="text-sm font-bold text-rose-500"></p>
-                            <input type="text" id="rentMoney" onkeyup="valueEntryErr(this.id)" value="00" class="bg-gray-300 w-40 py-0.5">
-                            <p id="rentMoneyValueErr" class="text-sm font-bold text-rose-500"></p>
-                            <input type="text" id="clothesMoney" onkeyup="valueEntryErr(this.id)" value="00" class="bg-gray-300 w-40 py-0.5">
-                            <p id="clothesMoneyValueErr" class="text-sm font-bold text-rose-500"></p>
+                    <h2 class="text-black font-bold text-2xl pb-1">Expences</h2>
+                    <div class="section-container flex justify-center w-2/4 sm:w-full">
+                        <div class="space-y-4 ml-48 w-full input_field_name flex justify-center flex-col text-lg text-black font-semibold text-right">
+                            <div class="flex flex-col justify-center space-x-5 sm:space-x-0.5 w-96">
+                                <div class="flex space-x-2">
+                                    <label for="foodMoney">Food:</label>
+                                    <input type="text" id="foodMoney" onkeyup="expencesEntryErr(this.id)" value="00" class="text-center bg-gray-200 w-36 py-1">
+                                </div>
+                                <p id="foodMoneyValueErr" class="text-left block text-sm font-bold text-rose-500"></p>
+                            </div>
+                            <div class="flex flex-col justify-center space-x-5 sm:space-x-0.5 w-96">
+                                <div class="flex space-x-2">
+                                    <label for="rentMoney">Rent :</label>
+                                    <input type="text" id="rentMoney" onkeyup="expencesEntryErr(this.id)" value="00" class="text-center bg-gray-200 w-36 py-1">
+                                </div>
+                                <p id="rentMoneyValueErr" class="text-left block text-sm font-bold text-rose-500"></p>
+                            </div>
+                            <div class="flex flex-col justify-center space-x-5 sm:space-x-0.5 w-96">
+                                <div class="flex space-x-2">
+                                    <label for="clothesMoney">Cloth:</label>
+                                    <input type="text" id="clothesMoney" onkeyup="expencesEntryErr(this.id)" value="00" class="text-center bg-gray-200 w-36 py-1">
+                                </div>
+                                <p id="clothesMoneyValueErr" class="text-left block text-sm font-bold text-rose-500"></p>
+                            </div>
                         </div>
                     </div>
-                    <button class="calculate_button rounded bg-sky-400 px-8 py-1 my-5 text-white text-lg font-semibold hover:bg-sky-300" id="calc-btn" type="submit">Calculate</button>
+                    <button class="calculate_button rounded bg-sky-400 px-8 py-1 my-2 text-white text-lg font-semibold hover:bg-sky-300" id="calc-btn" type="submit">Calculate</button>
                     <p id="error-text" class="text-center text-rose-500 text-base font-bold"></p>
                     <h2 class="text-black font-semibold text-lg pb-1">Total Expences: <span id="totalExpences">000</span></h2>
                     <h2 class="text-black font-semibold text-lg pb-3">Balence: <span id="afterExpencesBalence">000</span></h2>
@@ -70,16 +82,18 @@ Thats why I submit my code in a public repository. Please consider that.
                     <div class="saving_parcenteg_input flex flex-col justify-center">
                         <div class="saving_input">
                             <label for="saveAmount">Save:</label>
-                            <input class="w-20 px-6 ml-4 bg-gray-300" type="text" id="saveParcenteg" onkeyup="savingCalc(this.id)" placeholder="Enter">
+                            <input class="w-20 text-center py-1 ml-4 bg-gray-200" type="text" id="saveParcentage" onkeyup="savingCalc(this.id)" placeholder="Enter">
                             <span class="px-3">%</span>
                             <button type="submit" id="savingAmontEntryBtn" class="calculate_button rounded bg-sky-400 px-8 py-0.5 text-white text-lg font-semibold hover:bg-sky-300">Save</button>
                         </div>
                         <div class="saving_input_errHandleTxt">
                             <h4 id="savingErr" class=" pt-3text-sm font-bold text-rose-500"></h4>
-                        </div>                         
+                        </div>
                     </div>
-                    <h2 class="text-black font-bold text-base py-1">Saving Amount: <span id="savingAmount"></span></h2>
-                    <h2 class="text-black font-bold text-base">Remaining Balence: <span id="remainingBlnc"></span></h2>
+                    <div class="saving_and_remain_bal flex justify-center items-center space-x-7">
+                        <h2 class="text-black font-bold text-base py-1">Saving Amount: <span id="savingAmount"></span></h2>
+                        <h2 class="text-black font-bold text-base">Remaining Balence: <span id="remainingBlnc"></span></h2>
+                    </div>
                 </div>
                 <!-- saving amount input field end -->
             </div>

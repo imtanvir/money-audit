@@ -1,103 +1,143 @@
-// function percentage(partialValue, totalValue) {
-//     return (100 * partialValue) / totalValue;
-//  }
-/*
+/*In this project, many places I used globel variable scope.
+That's why many variable haven't their type. */
 
-total expences id: totalExpences
-balence id: afterExpencesBalence
-save input id: saveParcenteg
-save button id: savingAmontEntryBtn
-saving amount id: savingAmount
-remaining balence id : remainingBlnc
-*/
-
-/*
-I Create here all variable whitout their variable type.Because of reusing the value of those variable.
-There are many function and without declaring a variable, we can acces their value inside a function
-and access in outside. source: MDN Mozila Developer Network
- */
-// idCatcher function create for reuse to get the element and id 
+// idCatcher function create for reuse to get the id constrole;
 function idCatcher(idname) {
     const idCatcher = document.getElementById(idname);
     return idCatcher;
 }
-idCatcher('incomeAmount').addEventListener('keyup', function () {
+// ========================= 1.income value related and error handle code. =========================
+idCatcher('incomeAmount').focus();
+idCatcher('incomeAmount').addEventListener('keyup', function() {
     incomeAmount = parseFloat(document.getElementById(this.id).value);
-    console.log(incomeAmount);
 });
-// wrong value entry error handle 
-function valueEntryErr(idName) {
+// wrong value entry error handle
+function incomeValueErr(idName) {
+    const food = parseFloat(idCatcher('foodMoney').value);
+    const rent = parseFloat(idCatcher('rentMoney').value);
+    const clothes = parseFloat(idCatcher('clothesMoney').value);
+    const inputValue = parseFloat(idCatcher(idName).value);
+    console.log(food, rent, clothes, inputValue);
+    IncomeErr = idCatcher('incomeErr');
+    if (inputValue <= 0 || inputValue == '-' || inputValue == 0 || isNaN(inputValue)) {
+        return IncomeErr.innerText = 'Please enter a positive amount which is bigger then 0!';
+    } else if (inputValue < (food + rent + clothes)) {
+        return IncomeErr.innerText = 'Your Income money is less then expences';
+    } else if (inputValue > (food + rent + clothes)) {
+        idCatcher('error-text').innerText = '';
+        idCatcher('foodMoneyValueErr').innerText = '';
+        idCatcher('rentMoneyValueErr').innerText = '';
+        idCatcher('clothesMoneyValueErr').innerText = '';
+        IncomeErr.innerText = '';
+        idCatcher('savingErr').innerText = '';
+    }
+}
+// ================================= 2. Expenses value related and error handle code. ============
+function expencesEntryErr(idName) {
     const inputValue = parseFloat(idCatcher(idName).value);
     // Expences input value variable
     foodMoney = parseFloat(idCatcher('foodMoney').value);
     rentMoney = parseFloat(idCatcher('rentMoney').value);
     clothesMoney = parseFloat(idCatcher('clothesMoney').value);
-    IncomeErr = idCatcher('incomeErr');
-    console.log(inputValue, incomeAmount);
-    if (inputValue < 0 || inputValue == '-' || inputValue == 0 || isNaN(inputValue)) {
-        IncomeValueErrtxt = 'Please enter a positive amount which is bigger then 0!';
-        return IncomeErr.innerText = IncomeValueErrtxt;
-    } else {
-        IncomeValueErrtxt = '';
-        IncomeErr.innerText = IncomeValueErrtxt;
+    const inputValueCheck = idCatcher(idName).value;
+    const inputValueArray = inputValueCheck.split('', inputValueCheck.length);
+    let invalidTrue = '';
+    // Check the whole value that it is valid or not
+    for (let i = 0; inputValueArray.length > i; i++) {
+        const arrayValueCheck = parseFloat(inputValueArray[i]);
+        if (((typeof(parseFloat(inputValueArray[i])) == 'number') && (arrayValueCheck * 1 != arrayValueCheck)) || ((parseFloat(inputValueArray[0]) == 0) && (isNaN(parseFloat(inputValueArray[1])) != true))) {
+            invalidTrue = 'invalid';
+        }
     }
-    if (inputValue < 0 || inputValue == '-' || inputValue == 0 || isNaN(inputValue)) {
-        valueErrtxt = 'Please enter a positive amount';
-    }else if (((incomeAmount > inputValue) && incomeAmount < (foodMoney + rentMoney + clothesMoney)) || (incomeAmount <= inputValue && incomeAmount <= (foodMoney + rentMoney + clothesMoney)) || ((incomeAmount <= inputValue) && (incomeAmount < (foodMoney + rentMoney + clothesMoney)))) {
-        valueErrtxt = 'Expences amount over then Income Money!';
+    if (invalidTrue == 'invalid') {
+        valueErrtxt = 'You are enter an invalid amount!';
+    } else if (isNaN(parseFloat(idCatcher('incomeAmount').value))) {
+        valueErrtxt = 'First Enter your income amount!';
+    } else if (((incomeAmount > inputValue) && incomeAmount < (foodMoney + rentMoney + clothesMoney)) || (incomeAmount <= inputValue && incomeAmount <= (foodMoney + rentMoney + clothesMoney)) || ((incomeAmount <= inputValue) && (incomeAmount < (foodMoney + rentMoney + clothesMoney)))) {
+        valueErrtxt = 'Expences amount is over then Income Money!';
     } else {
         valueErrtxt = '';
+        idCatcher('error-text').innerText = '';
+        console.log(foodMoney);
     }
+    // If any entered value is wrong or not, the error/empty message will send from there after validation check 
     if (idName == 'foodMoney') {
         errWillshow = 'foodMoneyValueErr';
-    }else if (idName == 'rentMoney') {
+    } else if (idName == 'rentMoney') {
         errWillshow = 'rentMoneyValueErr';
-    }else{
+    } else if (idName == 'clothesMoney') {
         errWillshow = 'clothesMoneyValueErr';
     }
     err = idCatcher(errWillshow);
     err.innerText = valueErrtxt;
-    return err;
 }
-// calculation
-idCatcher('calc-btn').addEventListener('click', function () {
-    if (incomeAmount * 1) {
-        console.log("okkkkkkkkkkkkkkkkk");
-    }
+// ================================ 3. calculated button and error handle code======================
+// calculation will start when the cal-btn id button clicked
+idCatcher('calc-btn').addEventListener('click', function() {
     // Code validation
-    if ((incomeAmount * 1 && incomeAmount > 0) && (foodMoney * 1 && foodMoney >= 0) && (rentMoney * 1 && rentMoney >= 0) && (clothesMoney * 1 && clothesMoney >= 0)) {
-    // Total Expences money
-         expencesSum = foodMoney + rentMoney + clothesMoney;
-         balenceNow = incomeAmount - expencesSum;
-         totalExpencesId = idCatcher('totalExpences');
+    if ((incomeAmount * 1 && incomeAmount > 0) && (isNaN(foodMoney) != true && foodMoney >= 0) && (isNaN(rentMoney) != true && rentMoney >= 0) && (isNaN(clothesMoney) != true && clothesMoney >= 0)) {
+        if (incomeAmount < (foodMoney + rentMoney + clothesMoney)) {
+            const lessAmount = 'Income Money is less then expences';
+            return idCatcher('error-text').innerText = lessAmount;
+        }
+        // Total Expences money
+        expencesSum = foodMoney + rentMoney + clothesMoney;
+        balenceNow = incomeAmount - expencesSum;
+        totalExpencesId = idCatcher('totalExpences');
         totalExpencesId.innerText = expencesSum;
-    // Now remain balence
+        // After Expenses balence is
         balenceNowValue = idCatcher('afterExpencesBalence');
         balenceNowValue.innerText = balenceNow;
-    // Empty all input field
+        // Clear all input field
         idCatcher('incomeAmount').value = '';
         idCatcher('foodMoney').value = '';
         idCatcher('rentMoney').value = '';
         idCatcher('clothesMoney').value = '';
-        idCatcher('error-text').innerText = '';        
-    } else {
+        idCatcher('error-text').innerText = '';
+    }
+    // If any error ocurs then this portion will exicute and return a error
+    else {
         const errorTextMsg = 'Please enter a valid amount and positive number!';
-        console.log(incomeAmount,typeof(incomeAmount));
+        console.log(incomeAmount, typeof(incomeAmount));
         return idCatcher('error-text').innerText = errorTextMsg;
     }
 });
-function savingCaltoIncome(Percentage,myincome) {
-    return ((Percentage * 100) / myincome);
-}
+// ================================ 4. Saving code and Error handle. ===========================
 function savingCalc(idName) {
-    const savingPercentegIdValue = idCatcher(idName);
-    const savingPercenteg = parseFloat(savingPercentegIdValue.value);
+    const savingPercenteg = parseFloat(idCatcher(idName).value);
     const savingErr = idCatcher('savingErr');
-    if (savingPercenteg < 0 || savingPercenteg == '-' || savingPercenteg == 0 || isNaN(savingPercenteg)) {
-        savingValueErrtxt = 'Please enter a positive Percentage number which is bigger then 0!';
+    const savingValue = idCatcher(idName).value;
+    const savingInputValueArray = savingValue.split('', savingValue.length);
+    expencesTotal = foodMoney + rentMoney + clothesMoney;
+    afterExpencingMoney = incomeAmount - expencesTotal;
+    savingMoneyIs = (parseFloat(idCatcher('saveParcentage').value) / 100 * afterExpencingMoney);
+    let invalidTrue = '';
+    // Check the whole value that it is valid or not
+    for (let i = 0; savingInputValueArray.length > i; i++) {
+        const savingArrayValueCheck = parseFloat(savingInputValueArray[i]);
+        if ((typeof(parseFloat(savingInputValueArray[i])) == 'number') && (savingArrayValueCheck * 1 != savingArrayValueCheck)) {
+            invalidTrue = 'invalid';
+        }
+    }
+    if (invalidTrue == 'invalid') {
+        savingValueErrtxt = 'You are enter an invalid amount!';
+        return savingErr.innerText = savingValueErrtxt;
+    } else if (savingPercenteg >= 0 && isNaN(incomeAmount)) {
+        savingValueErrtxt = 'First Enter your income amount!';
         return savingErr.innerText = savingValueErrtxt;
     } else {
-        savingValueErrtxt = '';
-        savingErr.innerText = savingValueErrtxt;
+        if (savingMoneyIs >= afterExpencingMoney) {
+            return savingErr.innerText = 'You have not enough money to save!';
+        } else {
+            savingErr.innerText = '';
+        }
     }
 }
+// ====================== 5. saving money show code and remain balence. ===========================
+/* If all of the above code is valid then this portion will exicute
+ and by click and will show the saving money */
+idCatcher('savingAmontEntryBtn').addEventListener('click', function() {
+    idCatcher('savingAmount').innerText = savingMoneyIs.toFixed(2);
+    const remainingBlnc = afterExpencingMoney - savingMoneyIs;
+    idCatcher('remainingBlnc').innerText = remainingBlnc.toFixed(2);
+});
